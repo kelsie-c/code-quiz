@@ -1,6 +1,6 @@
 // Variables
 var quizQuestions = document.querySelector(".questions");
-var startButton = document.querySelector(".start");
+var startButton = document.createElement("button");
 var timerEl = document.querySelector(".timer");
 var secondsLeft = 100;
 var createList = document.createElement("ul");
@@ -23,6 +23,39 @@ function setTime() {
     }, 1000);
 
     renderQuestions(questionIndex);
+}
+
+// Create instructions object
+var instructionContent = {
+    header: "Take the Code Quiz!",
+    directions: "How to take the quiz: ",
+    button: startButton
+}
+
+// Render instructions on page
+function renderInstructions() {
+    // reset content to blank
+    quizQuestions.innerHTML = "";
+    createList.innerHTML = "";
+
+    // add a header
+    var dirHeader = document.createElement("h2");
+    dirHeader.setAttribute("id", "dirHeader");
+    dirHeader.textContent = instructionContent.header;
+    // render on page
+    quizQuestions.appendChild(dirHeader);
+
+    // add a paragraph
+    var initInstruct = document.createElement("p");
+    initInstruct.setAttribute("id", "initInstruct");
+    initInstruct.textContent = instructionContent.directions;
+    // render on page
+    quizQuestions.appendChild(initInstruct);
+
+    // add the start button
+    startButton.textContent = "Start";
+    // render on page
+    quizQuestions.appendChild(startButton);
 }
 
 // Create question objects
@@ -94,11 +127,11 @@ function checkAnswer(event) {
     // user chooses correct answer
     if (element.textContent == questionContent[questionIndex].answer) {
         questionsCorrect++;
-        answerFeedback.textContent = "Correct! The answer is: " + questionContent[questionIndex].answer;
+        answerFeedback.textContent = "Correct! The answer was: " + questionContent[questionIndex].answer;
     // user chooses incorrect answer
     } else {
         secondsLeft = secondsLeft - 10;
-        answerFeedback.textContent = "Incorrect! The answer is: " + questionContent[questionIndex].answer;
+        answerFeedback.textContent = "Incorrect! The answer was: " + questionContent[questionIndex].answer;
     }
     }
 
@@ -142,4 +175,17 @@ function scorePage() {
         clearInterval(timerInterval);
         scoreContent.textContent = "Your final score is: " + timeLeft;
     }
+
+    // get initials input
+
+    // send score and initials to local storage
+
+    // retrieve score and initials from local storage and sort
+    // use something like Array.sort(function(a,b){b-a});
+
+    // add button to return to main screen
+
+    // add button to clear high scores  
 }
+// Show instructions on load
+renderInstructions();
