@@ -2,7 +2,7 @@
 var quizQuestions = document.querySelector(".questions");
 var startButton = document.createElement("button");
 var timerEl = document.querySelector(".timer");
-var secondsLeft = 100;
+var secondsLeft = 101;
 var createList = document.createElement("ul");
 var questionIndex = 0;
 var questionsCorrect = 0;
@@ -10,6 +10,9 @@ var timerInterval;
 
 // Timer
 function setTime() {
+    questionIndex = 0;
+    secondsLeft = 101;
+    questionsCorrect = 0;
     timerInterval = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = secondsLeft + " seconds remaining";
@@ -29,7 +32,6 @@ function setTime() {
 var instructionContent = {
     header: "Take the Code Quiz!",
     directions: "How to take the quiz: ",
-    button: startButton
 }
 
 // Render instructions on page
@@ -184,6 +186,15 @@ function scorePage() {
     // use something like Array.sort(function(a,b){b-a});
 
     // add button to return to main screen
+    var returnBtn = document.createElement("button");
+    returnBtn.setAttribute("id", "returnBtn");
+    returnBtn.textContent = "Try Again";
+    quizQuestions.appendChild(returnBtn);
+
+    // add event listener to call renderInstructions function
+    returnBtn.addEventListener("click", function(){
+        renderInstructions();
+    });
 
     // add button to clear high scores  
 }
