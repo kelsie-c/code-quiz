@@ -29,28 +29,28 @@ function setTime() {
 var questionContent = [
     {
         question: "Commonly used data types do NOT include: ___",
-        choices: ["strings", "booleans", "alerts", "numbers"],
-        answer: "alerts"
+        choices: ["a) strings", "b) booleans", "c) alerts", "d) numbers"],
+        answer: "c) alerts"
     },
     {
         question: "The condition in an if/else statement is enclosed within: ___",
-        choices: ["quotations", "curly braces", "parentheses", "square brackets"],
-        answer: "parentheses"
+        choices: ["a) quotations", "b) curly braces", "c) parentheses", "d) square brackets"],
+        answer: "c) parentheses"
     },
     {
         question: "Arrays in JavaScript can be used to store: ___",
-        choices: ["numbers", "other arrays", "booleans", "all of the above"],
-        answer: "all of the above"
+        choices: ["a) numbers", "b) other arrays", "c) booleans", "d) all of the above"],
+        answer: "d) all of the above"
     },
     {
         question: "String value must be enclosed within ___ when being assigned to variables.",
-        choices: ["commas", "curly braces", "quotations", "parentheses"],
-        answer: "quotations"
+        choices: ["a) commas", "b) curly braces", "c) quotations", "d) parentheses"],
+        answer: "c) quotations"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is: ___",
-        choices: ["JavaScript", "terminal/bash", "alerts", "console.log"],
-        answer: "console.log"
+        choices: ["a) JavaScript", "b) terminal/bash", "c) alerts", "d) console.log"],
+        answer: "d) console.log"
     },
 ]
 
@@ -65,12 +65,10 @@ function renderQuestions(questionIndex) {
     quizQuestions.innerHTML = "";
     createList.innerHTML = "";
 
-    // for loop to parse all info in array to change question content
-    // for (let i = 0; i < questionContent.length; i++) {
-        var currentQuestion = questionContent[questionIndex].question;
-        var currentChoices = questionContent[questionIndex].choices;
-        quizQuestions.textContent = currentQuestion;
-    // }
+    // change question content
+    var currentQuestion = questionContent[questionIndex].question;
+    var currentChoices = questionContent[questionIndex].choices;
+    quizQuestions.textContent = currentQuestion;
 
     // create list items for each string in choices array and render to page
     currentChoices.forEach(function (newItem) {
@@ -99,6 +97,7 @@ function checkAnswer(event) {
         answerFeedback.textContent = "Correct! The answer is: " + questionContent[questionIndex].answer;
     // user chooses incorrect answer
     } else {
+        secondsLeft = secondsLeft - 10;
         answerFeedback.textContent = "Incorrect! The answer is: " + questionContent[questionIndex].answer;
     }
     }
