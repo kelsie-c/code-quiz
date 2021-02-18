@@ -252,6 +252,11 @@ function scorePage() {
                 // render on page
                 quizQuestions.appendChild(highScoreHeader);
 
+                // empty the list
+                while (highScoreList.firstChild) {
+                    highScoreList.removeChild(highScoreList.firstChild);
+                }
+
                 // add ordered list to page
                 for (i = 0; i < orderedScores.length && i < 10; i++) {
                     var scoreItem = orderedScores[i].score + " - " + orderedScores[i].initials;
