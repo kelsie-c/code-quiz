@@ -239,64 +239,60 @@ function scorePage() {
             var orderedScores = allScores.sort(function(a,b){return b.score-a.score});
             console.log(orderedScores);
 
-            // goToHighScores();
+            // clear page
+            quizQuestions.innerHTML = "";
 
-            // function goToHighScores() {
-                // clear page
-                quizQuestions.innerHTML = "";
+            // create ordered list of high scores
+            var highScoreHeader = document.createElement("h2");
+            highScoreHeader.setAttribute("id", "highScoreHeader");
+            highScoreHeader.textContent = "High Scores";
+            // render on page
+            quizQuestions.appendChild(highScoreHeader);
 
-                // create ordered list of high scores
-                var highScoreHeader = document.createElement("h2");
-                highScoreHeader.setAttribute("id", "highScoreHeader");
-                highScoreHeader.textContent = "High Scores";
-                // render on page
-                quizQuestions.appendChild(highScoreHeader);
+            // empty the list
+            while (highScoreList.firstChild) {
+                highScoreList.removeChild(highScoreList.firstChild);
+            }
+
+            // add ordered list to page
+            for (i = 0; i < orderedScores.length && i < 10; i++) {
+                var scoreItem = orderedScores[i].score + " - " + orderedScores[i].initials;
+
+                var highScoreItem = document.createElement("li");
+                highScoreItem.textContent = scoreItem;
+                quizQuestions.appendChild(highScoreList);
+                highScoreList.appendChild(highScoreItem);
+            }
+
+            // add button to return to main screen
+            var returnBtn = document.createElement("button");
+            returnBtn.setAttribute("id", "returnBtn");
+            returnBtn.textContent = "Try Again";
+            quizQuestions.appendChild(returnBtn);
+
+            // add event listener to call renderInstructions function
+            returnBtn.addEventListener("click", function(){
+                renderInstructions();
+            });
+
+            // add button to clear high scores
+            var clearBtn = document.createElement("button");
+            clearBtn.setAttribute("id", "clearBtn");
+            clearBtn.textContent = "Clear High Scores";
+            quizQuestions.appendChild(clearBtn);
+
+            // add event listener to clear button
+            clearBtn.addEventListener("click", function() {
+                //clear storage
+                localStorage.clear();
+                sessionStorage.clear();
+                localStorage.removeItem("allScores");
 
                 // empty the list
                 while (highScoreList.firstChild) {
                     highScoreList.removeChild(highScoreList.firstChild);
                 }
-
-                // add ordered list to page
-                for (i = 0; i < orderedScores.length && i < 10; i++) {
-                    var scoreItem = orderedScores[i].score + " - " + orderedScores[i].initials;
-
-                    var highScoreItem = document.createElement("li");
-                    highScoreItem.textContent = scoreItem;
-                    quizQuestions.appendChild(highScoreList);
-                    highScoreList.appendChild(highScoreItem);
-                }
-
-                // add button to return to main screen
-                var returnBtn = document.createElement("button");
-                returnBtn.setAttribute("id", "returnBtn");
-                returnBtn.textContent = "Try Again";
-                quizQuestions.appendChild(returnBtn);
-
-                // add event listener to call renderInstructions function
-                returnBtn.addEventListener("click", function(){
-                    renderInstructions();
-                });
-
-                // add button to clear high scores
-                var clearBtn = document.createElement("button");
-                clearBtn.setAttribute("id", "clearBtn");
-                clearBtn.textContent = "Clear High Scores";
-                quizQuestions.appendChild(clearBtn);
-
-                // add event listener to clear button
-                clearBtn.addEventListener("click", function() {
-                    //clear storage
-                    localStorage.clear();
-                    sessionStorage.clear();
-                    localStorage.removeItem("allScores");
-
-                    // empty the list
-                    while (highScoreList.firstChild) {
-                        highScoreList.removeChild(highScoreList.firstChild);
-                    }
-                })
-            // }
+            })
         }
     });
 }
