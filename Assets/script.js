@@ -200,7 +200,7 @@ function scorePage() {
     // get initials input
     var initialsHere = document.createElement("label");
     initialsHere.setAttribute("id", "initialsHere");
-    initialsHere.textContent = "Add your initials here";
+    initialsHere.textContent = "Add your initials here:  ";
 
     initialsInput = document.createElement("input");
     initialsInput.setAttribute("type", "text");

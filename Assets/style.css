@@ -1,12 +1,12 @@
 :root {
     --purple: rgb(45, 18, 165);
     --hoverPurple: rgb(98, 82, 172);
-    --scorePurple: rgb(159, 145, 218);
+    --scorePurple: rgb(175, 164, 221);
 }
 
 .container {
     display: block;
-    width: 60%;
+    width: 50%;
     margin: auto;
     margin-top: 25px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -29,6 +29,7 @@
 .timer {
     display: block;
     float: right;
+    font-weight: bold;
     margin-top: 5px;
 }
 
@@ -92,4 +93,10 @@ ol {
     counter-increment: div;
     content: counter(div) ". ";
     background-color: var(--scorePurple);
+}
+
+#submit {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
