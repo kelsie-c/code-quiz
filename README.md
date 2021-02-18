@@ -35,9 +35,9 @@ THEN I can save my initials and my score
 The following images demonstrate the web application's appearance and functionality:
 
 ![The Code Quiz Title Page](./Assets/Images/code-quiz-demo-1.png)
-
+```
 ![The Code Quiz Question Format](./Assets/Images/code-quiz-demo-2.png)
-
+```
 ![The Code Quiz End of Quiz](./Assets/Images/code-quiz-demo-3.png)
-
+```
 ![The Code Quiz High Scores Page](./Assets/Images/code-quiz-demo-4.png)
