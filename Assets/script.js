@@ -57,7 +57,7 @@ function renderInstructions() {
     quizQuestions.innerHTML = "";
 
     // add a header
-    var dirHeader = document.createElement("h2");
+    var dirHeader = document.createElement("h1");
     dirHeader.setAttribute("id", "dirHeader");
     dirHeader.textContent = instructionContent.header;
     // render on page
@@ -119,7 +119,10 @@ function renderQuestions(questionIndex) {
     // change question content
     var currentQuestion = questionContent[questionIndex].question;
     var currentChoices = questionContent[questionIndex].choices;
-    quizQuestions.textContent = currentQuestion;
+
+    var thisQuestion = document.createElement("h2");
+    thisQuestion.textContent = currentQuestion
+    quizQuestions.appendChild(thisQuestion);
 
     // create list items for each string in choices array and render to page
     currentChoices.forEach(function (newItem) {
@@ -176,7 +179,7 @@ function scorePage() {
     timerEl.innerHTML = "";
 
     // add a header
-    var endHeader = document.createElement("h2");
+    var endHeader = document.createElement("h1");
     endHeader.setAttribute("id", "endHeader");
     endHeader.textContent = "End of Quiz!";
     // render on page
@@ -252,13 +255,12 @@ function scorePage() {
             localStorage.setItem("allScores", newScore);
         
             // retrieve score and initials from local storage and sort
-            orderedScores = allScores.sort(function(a,b){return b.score-a.score});
+            orderedScores = allScores.sort(function(a,b) {
+                return b.score-a.score;
+            })
             console.log(orderedScores);
 
-            // create ordered list of high scores
-            highScoreHeader = document.createElement("h2");
-            highScoreHeader.setAttribute("id", "highScoreHeader");
-            highScoreHeader.textContent = "High Scores";
+            
 
             getScore()
         }
@@ -269,6 +271,10 @@ function getScore() {
     // clear page
     quizQuestions.innerHTML = "";
 
+    // create ordered list of high scores
+    highScoreHeader = document.createElement("h2");
+    highScoreHeader.setAttribute("id", "highScoreHeader");
+    highScoreHeader.textContent = "High Scores";
     // render on page
     quizQuestions.appendChild(highScoreHeader);
 
