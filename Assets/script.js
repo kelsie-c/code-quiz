@@ -48,7 +48,7 @@ function setTime() {
 // Create instructions object
 var instructionContent = {
     header: "Take the Code Quiz!",
-    directions: "How to take the quiz: ",
+    directions: "How to take the quiz: Select the best answer for each question asked. Click start when you are ready to begin.",
 }
 
 // Render instructions on page
